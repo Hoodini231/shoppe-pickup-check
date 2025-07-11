@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Megan Personal Shoppee Pickup Point Status Checker
+> **My friend Megan asked me to make her something to make her life easier so here it is**
+<img width="878" height="709" alt="Megan" src="https://github.com/user-attachments/assets/bd2b7a53-b7dd-4840-b7d4-cd6914d02850" />
 
-## Getting Started
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📦 Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project helps **Megan** check the availability status of her preferred **SPX Shopee Pickup Points** near her home easily rather than going into the app and checking out.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+When a pickup point becomes available AND Megan opts to be notified, the aws automatically sends an email notification to inform Megan, so she never misses the chance to select a convenient pickup point.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Because I hate myself rather than going with a simple backend API hosted on render making backend super easy to do I went with a serverless implementation! (This sounds easy until I realized I need selenium and to install chrome and chromedriver using a bash script in my docker container Fml).
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ⚙️ Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- ✅ Check real-time (every 10min) status of selected Shopee SPX Pickup Points
+- ✅ Automatic email alert when a point becomes available
+- ✅ Fully serverless
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🗂️ Tech Stack
 
-## Deploy on Vercel
+- **AWS Lambda** – Runs backend logic.
+- **AWS ECR** – Hosts my lil old web scrapping container.
+- **Docker** – Containerise external libraries and technologies to support web scrapping lambda function.
+- **Selenium** – Allows to scrape data when wait time is needed.
+- **Python** – Lambda function runtime.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Architecture
+<img width="1176" height="646" alt="image" src="https://github.com/user-attachments/assets/0fad124b-ecc4-4cc4-99c6-27dcc868a55e" />
+
+## 📌 Challenges
+- **Getting container to support chrome and chrome driver** - Had to use a bash script to install chrome and chromedriver in my container and had issues with amd64 and arm64 nonsense
+- **IAM and CORS setting** - Yeah forgot to add a allow in my statement so couldn't invoke or access my other lambdas
