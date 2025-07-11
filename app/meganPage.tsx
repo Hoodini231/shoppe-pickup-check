@@ -101,7 +101,7 @@ export default function ShopeePickupChecker() {
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 relative overflow-hidden"
-      style={{ maxWidth: 375, margin: "0 auto" }} // constrain outer container width to iPhone SE width
+      style={{ margin: "0 auto" }} // constrain outer container width to iPhone SE width
     >
       <div
         className="absolute inset-0 opacity-20"
